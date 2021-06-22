@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root-appbundle-app-prod
-  namespace: argocd
+  namespace: argo
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: default
     name: in-cluster
-  project: appbundle-project-prod
+  project: argo-project-dev
   source:
     path: argo/apps-children/dev
     repoURL: https://github.com/joaorufino/argo
