@@ -3,21 +3,15 @@ kind: Application
 metadata:
   name: argo-project-dev
   namespace: argo
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
+  project: argo
   destination:
+    server: 'https://kubernetes.default.svc'
     namespace: argo
-    name: in-cluster
-  project: argo-project-dev
   source:
     path: argo/apps/dev
     repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
-    chart: dev 
   syncPolicy:
     automated:
       prune: true
