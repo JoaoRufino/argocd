@@ -36,7 +36,7 @@ server:
     orphanedResources:
       warn: false
   additionalApplications: 
-    - name: argo
+    - name: dev
       namespace: argo
       destination:
         namespace: argo
