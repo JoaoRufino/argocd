@@ -14,7 +14,10 @@ spec:
     path: charts/argo-workflows
     repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
-  syncPolicy:
+    helm:
+     valueFiles:
+       - {{ default "values.yaml" .Values.serverName }}
+ syncPolicy:
     automated:
       prune: true
       selfHeal: true
