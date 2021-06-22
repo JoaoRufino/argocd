@@ -9,7 +9,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argo 
-  project: dev 
+  project: argo 
   source:
     path: charts/argo-workflow
     repoURL: https://github.com/joaorufino/argocd.git
