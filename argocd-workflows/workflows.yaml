@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-workflows
+spec:
+  project: default
+  source:
+    repoURL: 'https://joaorufino.github.io/helm-repo/'
+    targetRevision: 0.2.5
+    helm:
+      valueFiles:
+        - values.yaml
+    chart: argo-workflows
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
