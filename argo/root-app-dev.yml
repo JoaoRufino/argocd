@@ -11,6 +11,6 @@ spec:
     name: in-cluster
   project: argo-project-dev
   source:
-    path: argo/apps-children/dev
+    path: argo/apps/dev
     repoURL: https://github.com/joaorufino/argo
     targetRevision: HEAD
