@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: argo 
     name: in-cluster
-  project: argo-project-dev
+  project: argo
   source:
     path: kustomized_helm/overlays/dev
     repoURL: https://github.com/d0-labs/argocd-app-of-apps-child-guestbook
