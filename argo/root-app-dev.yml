@@ -12,5 +12,5 @@ spec:
   project: argo-project-dev
   source:
     path: argo/apps/dev
-    repoURL: https://github.com/joaorufino/argo
+    repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
