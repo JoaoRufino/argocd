@@ -1,15 +1,58 @@
-argo-cd:
-  installCRDs: false
+## ArgoCD configuration
+## Ref: https://github.com/argoproj/argo-cd
+##
+## Server
+server:
   global:
     image:
       tag: v1.8.1
   dex:
     enabled: false
-  server:
-    extraArgs:
-      - --insecure
-    config:
-      repositories: |
-        - type: helm
-          name: argo-cd
-          url: https://argoproj.github.io/argo-helm
+  ingress:
+    enabled: true
+  extraArgs:
+    - --insecure
+  installCRDs: false
+  configEnabled: true
+  config:
+    repositories: |
+      - name: argo-helm
+        type: helm
+        url: https://argoproj.github.io/argo-helm
+  additionalProjects: 
+  - name: argo
+    namespace: argo
+    additionalLabels: {}
+    additionalAnnotations: {}
+    description: Argos Related Applications
+    sourceRepos:
+    - '*'
+    destinations:
+    - namespace: argo
+      server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+    orphanedResources:
+      warn: false
+  additionalApplications: 
+    - name: argo
+      namespace: argo
+      destination:
+        namespace: argo
+        server: https://kubernetes.default.svc
+      project: argo
+      source:
+        path: apps
+        repoURL: https://github.com/JoaoRufino/argocd.git
+        targetRevision: HEAD
+        directory:
+          recurse: true
+          jsonnet: {}
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+        automated:
+          selfHeal: true
+          prune: true
+
