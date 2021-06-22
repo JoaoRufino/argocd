@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: helm-guestbook-app-qa
-  namespace: argocd
+  name: helm-guestbook-app-dev
+  namespace: default 
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: helm-guestbook-qa
+    namespace: default 
     name: in-cluster
-  project: appbundle-project-qa
+  project: argo-project-dev
   source:
     path: kustomized_helm/overlays/dev
     repoURL: https://github.com/d0-labs/argocd-app-of-apps-child-guestbook
