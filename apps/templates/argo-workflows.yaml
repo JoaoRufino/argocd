@@ -16,7 +16,7 @@ spec:
     targetRevision: HEAD
     helm:
      valueFiles:
-       - {{ default "values.yaml" .Values.serverName }}
+       - values.yaml
  syncPolicy:
     automated:
       prune: true
