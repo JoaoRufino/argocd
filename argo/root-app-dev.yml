@@ -11,6 +11,6 @@ spec:
     name: in-cluster
   project: appbundle-project-prod
   source:
-    path: argocd/apps-children/prod
-    repoURL: https://github.com/d0-labs/argocd-app-of-apps-parent
+    path: argo/apps-children/dev
+    repoURL: https://github.com/joaorufino/argo
     targetRevision: HEAD
