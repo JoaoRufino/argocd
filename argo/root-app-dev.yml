@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-argo-project-dev
+  name: argo-project-dev
   namespace: argo
   finalizers:
   - resources-finalizer.argocd.argoproj.io
