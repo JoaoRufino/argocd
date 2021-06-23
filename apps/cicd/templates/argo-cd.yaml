@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-workflows
+  name: argocd
   namespace: argo 
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,9 +11,10 @@ spec:
     namespace: argo 
   project: argo 
   source:
-    path: charts/argo-workflows
+    path: charts/argo-cd
     repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
