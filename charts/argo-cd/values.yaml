@@ -38,7 +38,7 @@ server:
         server: https://kubernetes.default.svc
       project: argo
       source:
-        path: env
+        path: apps
         repoURL: https://github.com/JoaoRufino/argocd.git
         targetRevision: HEAD
         helm:
