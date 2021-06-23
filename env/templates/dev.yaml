@@ -11,7 +11,7 @@ spec:
     namespace: argo 
   project: argo 
   source:
-    path: apps 
+    path: apps/cicd 
     repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
   syncPolicy:
