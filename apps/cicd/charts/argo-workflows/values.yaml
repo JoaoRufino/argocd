@@ -1,7 +1,6 @@
 server:
+  servicePort: 443
   ingress:
     enabled: true
-  extraArgs:
-  - --insecure
 installCRDs: false
 
