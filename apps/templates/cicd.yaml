@@ -11,7 +11,6 @@ spec:
     namespace: argo 
   project: argo 
   source:
+    path : cicd
     repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
-    helm: 
-      chart: cicd 
