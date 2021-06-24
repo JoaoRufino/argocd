@@ -14,3 +14,7 @@ spec:
     path : charts/cicd
     repoURL: https://github.com/joaorufino/cicd.git
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
