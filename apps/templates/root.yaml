@@ -1,18 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root
+  name: {{ .Values.root.name }}
+  namespace: {{ .Values.root.namespace | default .Values.global.namespace }}  
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: https://kubernetes.default.svc
-    namespace: argo 
-  project: argo
+    server: {{ .Values.root.server | default .Values.global.server }}  
+    namespace: {{ .Values.root.namespace | default .Values.global.namespace }}  
+  project: {{ .Values.root.project | default .Values.global.project }}  
   source:
-    path: apps/
-    repoURL:  https://github.com/joaorufino/argocd.git
-    targetRevision: HEAD
+    path: {{ .Values.root.source.path }}
+    repoURL: {{ .Values.root.source.repoURL }} 
+    targetRevision: {{ .Values.root.source.targetRevision }}
   syncPolicy:
     automated:
       prune: true

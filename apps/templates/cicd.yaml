@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cicd 
-  namespace: argo 
+  name: {{ .Values.cicd.name }}
+  namespace: {{ .Values.cicd.namespace | default .Values.global.namespace }}  
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    server: https://kubernetes.default.svc
-    namespace: argo 
-  project: argo 
+    server: {{ .Values.cicd.server | default .Values.global.server }}  
+    namespace: {{ .Values.cicd.namespace | default .Values.global.namespace }}  
+  project: {{ .Values.cicd.project | default .Values.global.project }}  
   source:
-    path : charts/cicd
-    repoURL: https://github.com/joaorufino/cicd.git
-    targetRevision: HEAD
+    path: {{ .Values.cicd.source.path }}
+    repoURL: {{ .Values.cicd.source.repoURL }} 
+    targetRevision: {{ .Values.cicd.source.targetRevision }}
   syncPolicy:
     automated:
       prune: true
