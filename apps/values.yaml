@@ -10,6 +10,13 @@ cicd:
     repoURL: https://github.com/joaorufino/cicd.git
     targetRevision: HEAD
 
+apps:
+  name: apps
+  source:
+    path: charts/apps
+    repoURL: https://github.com/joaorufino/cicd.git
+    targetRevision: HEAD
+
 root:
   name: root
   source:

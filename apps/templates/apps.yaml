@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.apps.name }}
+  namespace: {{ .Values.apps.namespace | default .Values.global.namespace }}  
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.apps.server | default .Values.global.server }}  
+    namespace: {{ .Values.apps.namespace | default .Values.global.namespace }}  
+  project: {{ .Values.apps.project | default .Values.global.project }}  
+  source:
+    path: {{ .Values.apps.source.path }}
+    repoURL: {{ .Values.apps.source.repoURL }} 
+    targetRevision: {{ .Values.apps.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
