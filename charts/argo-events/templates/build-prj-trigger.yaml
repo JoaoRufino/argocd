@@ -1,0 +1,40 @@
+#
+# 'EventSource' is a part from argo-events and listens for different events.
+# https://argoproj.github.io/argo-events/
+#
+#
+# This event source creates a webhook which will be called by GitHub.
+# 
+#  - list of repositories can be configured under 'spec.github.gh-trigger.repositories.names'
+#  - the GitHub events for which this event-source will be fire can be configured under 'spec.github.gh-trigger.events'
+#
+#
+# https://github.com/argoproj/argo-events/blob/master/api/event-source.md#argoproj.io/v1alpha1.GithubEventSource
+#
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: build-prj-trigger
+  namespace: argo
+spec:
+  service:
+    ports:
+      - port: 80
+        targetPort: 12000
+  github:
+    gh-trigger:
+      repositories:
+        - owner: joaorufino 
+          names:
+            - imaginary 
+      webhook:
+        endpoint: /push
+        port: "12000"
+        method: POST
+        url: https://green-starfish-46.loca.lt/
+      # https://developer.github.com/v3/activity/events/types/
+      events:
+        - "*"
+      apiToken:
+        name: build-prj-trigger-gh-token
+        key: token
