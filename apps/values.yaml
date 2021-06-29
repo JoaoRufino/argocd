@@ -7,14 +7,14 @@ cicd:
   name: cicd
   source:
     path: charts/cicd
-    repoURL: https://github.com/joaorufino/cicd.git
+    repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
 
 apps:
   name: apps
   source:
     path: charts/apps
-    repoURL: https://github.com/joaorufino/cicd.git
+    repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
 
 root:
