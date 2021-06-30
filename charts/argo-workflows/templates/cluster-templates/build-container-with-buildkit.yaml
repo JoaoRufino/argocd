@@ -111,15 +111,11 @@ spec:
           - name: path
           - name: tag 
       container:
-        image: golang:1.13
+        image: golang:1.12
         volumeMounts:
           - mountPath: /work
             name: work
         workingDir: /work/{{`{{inputs.parameters.path}}`}}
-        env:
-          # Because this is not a Gomodule, we must turn modules off.
-          - name: GO111MODULE
-            value: "off"
         command:
           - go
         args:
