@@ -14,6 +14,10 @@ spec:
     path: charts/imaginary
     repoURL: https://github.com/joaorufino/argocd.git
     targetRevision: HEAD
+    helm:
+      releaseName: testapp
+      valueFiles:
+        - "secrets.yaml"
   syncPolicy:
     automated:
       prune: true
