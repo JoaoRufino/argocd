@@ -6,7 +6,9 @@
 argo-cd:
   installCRDs: false
   global:
-      tag: v1.8.1
+    image:
+      repository: niplodim/argocd
+      tag: latest
   dex:
     enabled: false
   server:
@@ -62,7 +64,3 @@ argo-cd:
           automated:
             selfHeal: true
             prune: true
-  repoServer:
-    image:
-      repository: niplodim/argocd
-      tag: latest
