@@ -5,11 +5,6 @@
 # Need to move some of these values to templates
 argo-cd:
   installCRDs: false
-  global:
-    image:
-      repository: niplodim/argocd
-      tag: v3 
-
   dex:
     enabled: false
   server:
@@ -65,3 +60,16 @@ argo-cd:
           automated:
             selfHeal: true
             prune: true
+  repoServer:
+    image:
+      repository: niplodim/argocd
+      tag: v1 
+    volumes:
+      - name: sops-pgp-key
+        secret:
+          secret_name: sops-pgp-key
+    #gpg --export-secret-keys --armor "${SOPS_PGP_FP}" | kubectl create secret generic sops-gpg-key --namespace=argo --from-file=gpg.asc=/dev/stdin
+    volumeMounts:
+      - name: sops-pgp-key
+        mountPath: /home/argocd/gpg/
+        readOnly: true
