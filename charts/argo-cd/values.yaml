@@ -67,7 +67,7 @@ argo-cd:
     volumes:
       - name: sops-pgp-key
         secret:
-          secret_name: sops-pgp-key
+          secretName: sops-pgp-key
     #gpg --export-secret-keys --armor "${SOPS_PGP_FP}" | kubectl create secret generic sops-gpg-key --namespace=argo --from-file=gpg.asc=/dev/stdin
     volumeMounts:
       - name: sops-pgp-key
