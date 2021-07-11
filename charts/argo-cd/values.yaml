@@ -65,11 +65,11 @@ argo-cd:
       repository: niplodim/argocd
       tag: v1 
     volumes:
-      - name: sops-pgp-key
+      - name: sops-gpg-key
         secret:
-          secretName: sops-pgp-key
+          secretName: sops-gpg-key
     #gpg --export-secret-keys --armor "${SOPS_PGP_FP}" | kubectl create secret generic sops-gpg-key --namespace=argo --from-file=gpg.asc=/dev/stdin
     volumeMounts:
-      - name: sops-pgp-key
+      - name: sops-gpg-key
         mountPath: /home/argocd/gpg/
         readOnly: true
